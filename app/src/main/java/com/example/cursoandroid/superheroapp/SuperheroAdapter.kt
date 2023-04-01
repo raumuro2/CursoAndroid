@@ -8,7 +8,7 @@ import com.example.cursoandroid.R
 import com.example.cursoandroid.TODOApp.Task
 import com.example.cursoandroid.TODOApp.TasksViewHolder
 
-class SuperheroAdapter (var superheroList:List<SuperHeroItemResponse> = emptyList()):
+class SuperheroAdapter (var superheroList:List<SuperHeroItemResponse> = emptyList(), private val onItemSelected:(String) -> Unit):
     RecyclerView.Adapter<SuperheroViewHolder>()  {
 
     fun updateList(superheroList:List<SuperHeroItemResponse>){
@@ -25,7 +25,7 @@ class SuperheroAdapter (var superheroList:List<SuperHeroItemResponse> = emptyLis
 
     override fun onBindViewHolder(holder: SuperheroViewHolder, position: Int) {
 
-        holder.bind(superheroList[position])
+        holder.bind(superheroList[position], onItemSelected)
     }
 
 }
